@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spotify EDA — Team Work Guide</title>
+<style>
+:root{--ink:#17231f;--muted:#61716a;--green:#1f7a55;--green2:#dff3e9;--mint:#f3faf6;--line:#dce7e0;--paper:#fff;--bg:#eef4f0;--amber:#fff4d9;--amberline:#edcf7a;--blue:#eaf3ff;--blueline:#b8d0f2;--red:#fff0ee;--redline:#f0c2bb;--shadow:0 12px 32px rgba(23,35,31,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 Inter,Segoe UI,Arial,sans-serif}.wrap{max-width:1120px;margin:0 auto;padding:28px 22px 64px}.hero{background:linear-gradient(135deg,#102b22,#1f7652);color:#fff;border-radius:24px;padding:34px 34px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"♫";position:absolute;right:34px;top:-28px;font-size:190px;opacity:.08;line-height:1}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:11px;font-weight:800;color:#aee0c4}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:12px 0 12px;max-width:760px}.hero p{max-width:760px;color:#e0eee7;margin:0 0 20px}.pills{display:flex;flex-wrap:wrap;gap:8px}.pill{display:inline-flex;border:1px solid rgba(255,255,255,.24);background:rgba(255,255,255,.1);padding:6px 11px;border-radius:99px;font-size:12px;font-weight:700}.notice{margin:20px 0;background:var(--amber);border:1px solid var(--amberline);padding:15px 18px;border-radius:14px}.notice strong{color:#664b0c}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 4px 16px rgba(23,35,31,.035)}.span-12{grid-column:span 12}.span-6{grid-column:span 6}.span-4{grid-column:span 4}.span-8{grid-column:span 8}h2{font-size:25px;line-height:1.2;margin:0 0 12px}h3{font-size:18px;margin:22px 0 8px}h4{font-size:15px;margin:16px 0 6px}p{margin:7px 0 12px}.muted{color:var(--muted)}.tag{display:inline-block;background:var(--green2);color:#175d40;padding:4px 9px;border-radius:99px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:9px}.member-title{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.member-num{font-size:13px;color:var(--green);font-weight:800;background:var(--green2);border-radius:12px;padding:8px 11px;white-space:nowrap}.leadbox{background:#f4f8ff;border:1px solid var(--blueline);border-radius:15px;padding:15px 17px}.danger{background:var(--red);border:1px solid var(--redline);border-radius:14px;padding:14px 16px}.success{background:var(--mint);border:1px solid var(--line);border-radius:14px;padding:14px 16px}ul,ol{padding-left:22px;margin:8px 0 12px}li{margin:5px 0}.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;position:relative;padding-left:42px;margin:13px 0;min-height:30px}.steps li:before{content:counter(step);position:absolute;left:0;top:0;background:var(--green2);color:var(--green);font-weight:800;width:28px;height:28px;border-radius:50%;display:grid;place-items:center}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:12px 0}table{border-collapse:collapse;width:100%;min-width:620px;background:#fff}th,td{padding:11px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f7f3;color:#29463a;font-size:12px;text-transform:uppercase;letter-spacing:.04em}tr:last-child td{border-bottom:0}code{font-family:Consolas,Menlo,monospace;background:#f0f4f1;padding:2px 5px;border-radius:5px;font-size:.92em}pre{background:#12231d;color:#e7f5ed;padding:17px 18px;border-radius:13px;overflow-x:auto;font:13px/1.55 Consolas,Menlo,monospace;white-space:pre}.copy-note{font-size:12px;color:var(--muted);margin-top:-5px}.checklist{list-style:none;padding:0}.checklist li{margin:9px 0;padding-left:29px;position:relative}.checklist li:before{content:"□";position:absolute;left:2px;top:-1px;color:var(--green);font-size:19px;font-weight:700}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.kpi{border:1px solid var(--line);border-radius:13px;padding:13px;background:#fbfdfb}.kpi b{display:block;font-size:21px;color:var(--green)}.kpi span{font-size:12px;color:var(--muted)}.toc{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.toc a{color:#fff;text-decoration:none;font-size:12px;padding:7px 11px;border:1px solid rgba(255,255,255,.25);border-radius:9px}.toc a:hover{background:rgba(255,255,255,.14)}.small{font-size:12px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:25px 0 0}.rule{height:1px;background:var(--line);margin:20px 0}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.callout-title{font-size:13px;font-weight:800;margin-bottom:5px}.metric{font-weight:800;color:var(--green)}
+@media(max-width:760px){.span-6,.span-4,.span-8{grid-column:span 12}.hero{padding:25px 22px}.card{padding:18px}.kpis{grid-template-columns:1fr 1fr}.twocol{grid-template-columns:1fr}.member-title{display:block}.member-num{display:inline-block;margin-top:6px}}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}.hero{border-radius:0;box-shadow:none;print-color-adjust:exact;-webkit-print-color-adjust:exact}.card{box-shadow:none;break-inside:avoid}.toc{display:none}.notice,.danger,.leadbox,.success,.tag,.member-num{print-color-adjust:exact;-webkit-print-color-adjust:exact}a{color:inherit;text-decoration:none}.footer{padding-bottom:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">Team handbook · Spotify data analysis</div>
+  <h1>Spotify EDA<br>Team Work Guide</h1>
+  <p>Clear instructions for all three analysis members: what to analyze, how to code it, which graphs to produce, what to write, and exactly what to hand over to the team leader.</p>
+  <div class="pills"><span class="pill">4-member team</span><span class="pill">Deadline: 25 November 2026</span><span class="pill">Python · Pandas · Matplotlib · Seaborn</span><span class="pill">Beginner-friendly workflow</span></div>
+  <nav class="toc"><a href="#verified">Verified facts</a><a href="#common">Common rules</a><a href="#member1">Member 1</a><a href="#member2">Member 2</a><a href="#member3">Member 3</a><a href="#handoff">Submission checklist</a><a href="#schedule">Timeline</a></nav>
+</header>
+
+<div class="notice"><strong>Current project state — 22 November 2026:</strong> The leader has prepared the data foundation, temporal analysis, recommendation evidence, team documents, and a presentation draft. The three member analysis sections are still awaiting handoff. Do not treat any teammate analysis as complete until its notebook and evidence have been received and reviewed. Use the processed CSV as a read-only shared dataset.</div>
+
+<section id="verified" class="grid">
+  <div class="card span-12">
+    <span class="tag">Verified project facts · 22 Nov 2026</span>
+    <h2>Use these numbers as checks, not as numbers to copy blindly</h2>
+    <p>These values were recalculated from the project's actual files. Unless noted otherwise, processed-data results below use <code>data/processed/cleaned_spotify_tracks.csv</code>. The raw file remains unchanged.</p>
+    <div class="table-wrap"><table><thead><tr><th>Item</th><th>Verified result</th><th>How to use it</th></tr></thead><tbody>
+      <tr><td>Raw dataset</td><td>62,317 rows × 22 columns; years 1971–2024; no blank/null cells</td><td>Use when reporting the original source file only.</td></tr>
+      <tr><td>Processed dataset</td><td>62,239 rows × 22 columns; 78 exact duplicate rows removed</td><td>Use for all assigned analyses. Do not remove rows or alter this shared file.</td></tr>
+      <tr><td>Sentinel values</td><td>35 records had -1 in acousticness, danceability, energy, instrumentalness, key, liveness, mode, speechiness, tempo, time_signature, and valence, and -100,000 in loudness; these 12 measurements per record were changed to missing (420 cells total)</td><td>The records remain in the processed file. Pandas summaries skip the missing feature values. Do not interpret the sentinel values as real measurements.</td></tr>
+      <tr><td>Popularity, processed file</td><td>Mean 15.36; median 7; minimum 0; maximum 93</td><td>The median is much lower than the mean; describe the distribution from your own chart. Do not say popularity is “left-skewed” merely because many scores are low.</td></tr>
+      <tr><td>Energy vs popularity</td><td>Pearson r = 0.147; 62,204 paired non-missing rows</td><td>Weak positive linear association. It does not prove that energy causes popularity.</td></tr>
+      <tr><td>Other popularity correlations</td><td>Danceability r = 0.042; valence r = 0.009; acousticness r = -0.138; instrumentalness r = -0.127</td><td>These are weak associations in this dataset. State the coefficient and valid pair count, and do not turn them into production rules.</td></tr>
+      <tr><td>Temporal coverage</td><td>Most tracks in 2023: 6,427. Fewest in 1976: 9. Mean popularity is highest in 1976 (39.33, n=9); among years with at least 30 tracks, highest is 1977 (34.46, n=39), and lowest is 1992 (7.90, n=405).</td><td>Small-year values are unstable. Historical patterns describe this dataset, not a future release forecast.</td></tr>
+    </tbody></table></div>
+    <h3>Language counts and popularity in the processed data</h3>
+    <div class="table-wrap"><table><thead><tr><th>Language label</th><th>Track count</th><th>Mean popularity</th><th>Median popularity</th></tr></thead><tbody>
+      <tr><td>English</td><td>23,389</td><td>14.76</td><td>5</td></tr><tr><td>Unknown</td><td>13,005</td><td>12.26</td><td>4</td></tr><tr><td>Tamil</td><td>12,609</td><td>11.91</td><td>3</td></tr><tr><td>Korean</td><td>6,893</td><td>27.55</td><td>26</td></tr><tr><td>Hindi</td><td>5,740</td><td>18.20</td><td>11</td></tr><tr><td>Telugu</td><td>321</td><td>14.32</td><td>9</td></tr><tr><td>Malayalam</td><td>282</td><td>7.32</td><td>2</td></tr>
+    </tbody></table></div>
+    <p><b>Interpretation rule:</b> English has the largest number of tracks; Korean has the highest average popularity in this file. Neither volume nor group average explains why a track is popular. Language groups have very different sample sizes and may differ in artist reach, track age, promotion, and coverage.</p>
+    <div class="danger"><b>Senior reference corrections:</b> Do not copy every claim from the senior notebook or PDF. The PDF describes 1975 popularity as about 17.5, while this CSV gives 37.37 for 19 tracks. It calls Korean popularity “narrow and low,” while the processed file has the highest language mean for Korean. The PDF also recommends raising energy or copying a “Korean model”; the weak observational correlation above does not support a causal claim.</div>
+    <p class="muted small">Source files and calculations: <code>outputs/reports/DATASET_PROFILE.md</code>, <code>TEMPORAL_ANALYSIS_REPORT.md</code>, <code>RECOMMENDATION_EVIDENCE.md</code>, <code>REFERENCE_AUDIT.md</code>, <code>outputs/tables/language_summary.csv</code>, and <code>temporal_yearly_summary.csv</code>. If your recalculation differs, compare the raw/processed file, filters, and missing-value handling with the leader before changing a result.</p>
+  </div>
+</section>
+
+<section id="common" class="grid">
+  <div class="card span-8">
+    <span class="tag">Project overview</span>
+    <h2>What are we trying to find out?</h2>
+    <p>We are exploring a Spotify tracks dataset to understand track characteristics, how audio features relate to popularity, how tracks differ across languages, and how patterns vary over release years.</p>
+    <p>The project must have four distinct analysis sections: <b>Univariate, Bivariate, Multivariate and Temporal Analysis</b>. Outlier analysis is an additional section. Every chart needs an interpretation and a useful insight; the final recommendations must be supported by the results.</p>
+    <div class="kpis"><div class="kpi"><b>62,317</b><span>Rows in the original CSV</span></div><div class="kpi"><b>22</b><span>Columns in the original CSV</span></div><div class="kpi"><b>25 Nov</b><span>Final submission date</span></div></div>
+  </div>
+  <div class="card span-4">
+    <span class="tag">Important handoff</span>
+    <h2>Use the shared clean data</h2>
+    <p>The raw file has <b>62,317 rows and 22 columns</b>. The processed file has <b>62,239 rows and 22 columns</b>: 78 exact repeated rows were removed, and 35 records with confirmed sentinel values were retained with those measurements marked missing. This creates 420 missing measurement cells across 12 columns. No values were imputed. Read the profile before using a statistic.</p>
+    <p class="muted small">Check the leader's data-quality report for the precise affected columns and cleaning details. Do not guess.</p>
+  </div>
+  <div class="card span-12">
+    <h2>Shared setup — everyone follows this</h2>
+    <ol class="steps">
+      <li><b>Get the complete project folder from the leader.</b> The leader must share the `Spotify_EDA_Project` folder using a shared drive or another agreed method. The leader's local `D:\MANHATTAN\...` path will not automatically work on your computer.</li>
+      <li><b>Find the processed CSV.</b> Use `data/processed/cleaned_spotify_tracks.csv` if that is the filename in the shared project. If the actual filename differs, use the one in the leader's README/progress report and confirm it with the leader.</li>
+      <li><b>Open your notebook inside the project's `notebooks` folder.</b> Use a relative path to read the shared processed CSV.</li>
+      <li><b>Use the same column names as the CSV.</b> Run `print(df.columns.tolist())` before coding. If a column name differs from an example below, change the code to match the real column name.</li>
+      <li><b>Save your own notebook, graphs and written summary</b> into the folders and filenames listed in your assignment below.</li>
+    </ol>
+    <h3>Recommended libraries</h3>
+    <p><code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, <code>seaborn</code>. Use basic Python and straightforward DataFrame operations.</p>
+    <h3>Starter code for every member</h3>
+    <pre>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the shared processed dataset
+df = pd.read_csv("../data/processed/cleaned_spotify_tracks.csv")
+
+# Check the data
+print(df.head())
+print(df.shape)
+print(df.columns.tolist())</pre>
+  </div>
+  <div class="card span-6">
+    <h2>How to run the project locally</h2>
+    <p>From PowerShell, open the project folder and run the notebook environment:</p>
+    <pre>cd D:\MANHATTAN\Spotify_EDA_Project
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+jupyter notebook</pre>
+    <p class="muted small">Use your own project-folder path on your computer. Create a separate virtual environment on each member’s computer; do not copy the leader’s .venv folder. If PowerShell blocks activation, use the process-only command in README.md or ask the leader for help.</p>
+  </div>
+  <div class="card span-6">
+    <h2>Code and graph rules</h2>
+    <ul>
+      <li>Keep code beginner-friendly, readable and commented where helpful.</li>
+      <li>Do not use complicated classes or unnecessary advanced programming.</li>
+      <li>Use clear graph titles and labelled axes.</li>
+      <li>Save charts as PNG files at 150–200 DPI.</li>
+      <li>Use `plt.tight_layout()` before saving.</li>
+      <li>Do not make up numbers or interpretations.</li>
+      <li>Do not overwrite the raw or processed master CSV.</li>
+    </ul>
+  </div>
+  <div class="card span-12">
+    <h2>Every graph must have a written interpretation</h2>
+    <div class="twocol">
+      <div class="success"><div class="callout-title">Good interpretation format</div><ol><li><b>What the graph shows:</b> Describe the visible pattern.</li><li><b>Evidence:</b> Mention a real value, range, count, median or correlation.</li><li><b>Insight:</b> Explain why that pattern matters for music or the dataset.</li><li><b>Limitation:</b> Mention an important caution.</li></ol></div>
+      <div class="danger"><div class="callout-title">Do not write these unsupported claims</div><ul><li>“High energy makes a song popular.”</li><li>“This language is the most successful” based only on a small sample.</li><li>“Outliers are errors” without checking them.</li><li>“Popularity is caused by this feature” based only on correlation.</li></ul><p><b>Remember:</b> correlation is association, not proof of cause and effect.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="member1" class="grid">
+  <div class="card span-12">
+    <div class="member-title"><div><span class="tag">Assignment 01</span><h2>Member 1 — Data Quality Review & Univariate Analysis</h2><p class="muted">Your job is to verify the leader's prepared dataset and study one variable at a time.</p></div><span class="member-num">Member 1</span></div>
+    <div class="leadbox"><b>Important:</b> The leader's Codex run has already performed the initial cleaning. You are not being asked to create a second competing cleaned dataset. Your first task is to review and document the cleaning already done, then perform univariate analysis using the shared processed dataset.</div>
+    <h3>Part A — Verify the dataset and cleaning</h3>
+    <ol class="steps">
+      <li>Open the raw and processed CSV files.</li>
+      <li>Print `shape`, column names and data types for both files.</li>
+      <li>Read the leader's `DATASET_PROFILE.md` and data-cleaning section in the README/progress report.</li>
+      <li>Confirm that the raw data has 62,317 rows and 22 columns.</li>
+      <li>Confirm the report's finding of 78 exact duplicate rows and 35 records with invalid sentinel measurements marked missing.</li>
+      <li>Check missing values in the processed data and identify which columns are affected using the leader's report.</li>
+      <li>Do not drop more rows, fill missing measurements, or change the shared processed CSV. Report any discrepancy to the leader.</li>
+    </ol>
+    <h3>Part B — Create these univariate charts</h3>
+    <div class="table-wrap"><table><thead><tr><th>Chart</th><th>Variable(s)</th><th>What to investigate</th><th>Suggested output name</th></tr></thead><tbody>
+      <tr><td>1. Popularity histogram</td><td><code>popularity</code></td><td>Where most tracks fall; whether the distribution is skewed; whether high scores are rare.</td><td><code>popularity_histogram.png</code></td></tr>
+      <tr><td>2. Audio-feature distributions</td><td><code>energy</code>, <code>danceability</code>, <code>valence</code></td><td>Show the shape and spread of each feature. You may make three separate histograms or one clearly labelled multi-panel figure.</td><td><code>audio_feature_histograms.png</code></td></tr>
+      <tr><td>3. Popularity boxplot</td><td><code>popularity</code></td><td>Median, interquartile range, whiskers and possible outlying values.</td><td><code>popularity_boxplot.png</code></td></tr>
+      <tr><td>4. Language frequency bar chart</td><td><code>language</code></td><td>Most represented languages and the number of tracks in each. Show the top 10 and group the rest as “Other” only if clearly explained.</td><td><code>language_frequency.png</code></td></tr>
+      <tr><td>5. Top artists bar chart (optional if time)</td><td><code>artist_name</code></td><td>Artists with the most track entries in this dataset. This is frequency, not popularity or total streams.</td><td><code>top_artists_frequency.png</code></td></tr>
+    </tbody></table></div>
+    <h3>How to make a histogram — simple code example</h3>
+    <pre>plt.figure(figsize=(8, 5))
+sns.histplot(data=df, x="popularity", bins=20, kde=True)
+plt.title("Distribution of Track Popularity")
+plt.xlabel("Popularity Score")
+plt.ylabel("Number of Tracks")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/univariate/popularity_histogram.png", dpi=180)
+plt.show()</pre>
+    <h3>How to make the language bar chart</h3>
+    <pre>language_counts = df["language"].value_counts().head(10)
+
+plt.figure(figsize=(10, 5))
+sns.barplot(x=language_counts.values, y=language_counts.index)
+plt.title("Top 10 Languages by Number of Tracks")
+plt.xlabel("Number of Tracks")
+plt.ylabel("Language")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/univariate/language_frequency.png", dpi=180)
+plt.show()</pre>
+    <h3>What you must write for each chart</h3>
+    <ul><li>Describe whether the values are concentrated, spread out or skewed.</li><li>Report useful statistics such as mean, median, minimum and maximum where relevant.</li><li>For language/artist counts, include actual counts and percentages if possible.</li><li>Do not call a language or artist “successful” based only on the number of rows.</li></ul>
+    <h3>Member 1 — exact deliverables</h3>
+    <ul class="checklist"><li><code>notebooks/06_Member1_Univariate.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/univariate/</code></li><li><code>outputs/reports/MEMBER1_UNIVARIATE_SUMMARY.md</code></li><li>A short data-quality verification note listing any mismatch with the leader's report</li><li>2–3 PPT slides: data quality/cleaning summary and univariate findings</li></ul>
+  </div>
+</section>
+
+<section id="member2" class="grid">
+  <div class="card span-12">
+    <div class="member-title"><div><span class="tag">Assignment 02</span><h2>Member 2 — Bivariate Analysis</h2><p class="muted">Your job is to study the relationship between two variables at a time.</p></div><span class="member-num">Member 2</span></div>
+    <div class="success"><b>Main question:</b> How are audio features associated with popularity? Do different languages have different popularity distributions? Your job is to measure and visualize relationships, not to prove causation.</div>
+    <h3>Part A — Create these graphs</h3>
+    <div class="table-wrap"><table><thead><tr><th>Chart</th><th>X variable</th><th>Y variable</th><th>What to investigate</th><th>Output</th></tr></thead><tbody>
+      <tr><td>1. Scatter plot</td><td><code>energy</code></td><td><code>popularity</code></td><td>Direction and strength of association. Calculate Pearson correlation.</td><td><code>energy_vs_popularity.png</code></td></tr>
+      <tr><td>2. Scatter plot</td><td><code>danceability</code></td><td><code>popularity</code></td><td>Whether danceability has a positive, negative or weak relationship with popularity.</td><td><code>danceability_vs_popularity.png</code></td></tr>
+      <tr><td>3. Scatter plot</td><td><code>valence</code></td><td><code>popularity</code></td><td>Whether musical positivity is associated with popularity.</td><td><code>valence_vs_popularity.png</code></td></tr>
+      <tr><td>4. Scatter plot</td><td><code>energy</code></td><td><code>danceability</code></td><td>Whether more energetic tracks also tend to be more danceable.</td><td><code>energy_vs_danceability.png</code></td></tr>
+      <tr><td>5. Correlation heatmap</td><td>Selected numeric columns</td><td>Selected numeric columns</td><td>Compare pairwise linear correlations across popularity and key audio features.</td><td><code>correlation_heatmap.png</code></td></tr>
+      <tr><td>6. Language vs popularity</td><td><code>language</code> (groups)</td><td><code>popularity</code></td><td>Compare the distribution/median of popularity across adequately represented languages.</td><td><code>popularity_by_language.png</code></td></tr>
+    </tbody></table></div>
+    <h3>How to calculate a correlation</h3>
+    <pre>energy_popularity_corr = df["energy"].corr(df["popularity"])
+print("Energy-popularity correlation:", energy_popularity_corr)
+
+danceability_popularity_corr = df["danceability"].corr(df["popularity"])
+print("Danceability-popularity correlation:", danceability_popularity_corr)</pre>
+    <h3>How to make a scatter plot</h3>
+    <pre>plt.figure(figsize=(8, 5))
+sns.scatterplot(data=df, x="energy", y="popularity", alpha=0.25, s=18)
+plt.title("Energy vs Track Popularity")
+plt.xlabel("Energy")
+plt.ylabel("Popularity")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/bivariate/energy_vs_popularity.png", dpi=180)
+plt.show()</pre>
+    <p><b>Plotting tip:</b> If 62,000 points overlap too much, use a random sample only for the displayed scatter plot. Calculate the correlation from all valid rows. Clearly state when a sample was used.</p>
+    <pre># Use a sample only to make the scatter plot easier to read
+plot_data = df[["energy", "popularity"]].dropna()
+plot_sample = plot_data.sample(n=min(5000, len(plot_data)), random_state=42)
+
+plt.figure(figsize=(8, 5))
+sns.scatterplot(data=plot_sample, x="energy", y="popularity", alpha=0.3)
+plt.title("Energy vs Popularity (5,000-track sample, if available)")
+plt.xlabel("Energy")
+plt.ylabel("Popularity")
+plt.tight_layout()
+plt.show()</pre>
+    <h3>How to make a correlation heatmap</h3>
+    <pre>selected_columns = [
+    "popularity", "energy", "danceability",
+    "valence", "acousticness", "loudness"
+]
+
+correlation_data = df[selected_columns].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_data, annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Between Spotify Audio Features")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/bivariate/correlation_heatmap.png", dpi=180)
+plt.show()</pre>
+    <h3>What you must write</h3>
+    <ul><li>For each pair, report the correlation coefficient and classify it carefully as weak, moderate or strong based on its magnitude and context.</li><li>State how many valid rows were used for the calculation.</li><li>Describe whether the scatter plot shows a clear pattern, a broad cloud or possible clusters.</li><li>For language comparisons, show the number of tracks per language and avoid conclusions from tiny groups.</li><li>Explain that Pearson correlation measures linear association and is sensitive to unusual values.</li></ul>
+    <div class="notice"><strong>Leader's preliminary result:</strong> Codex reports an energy–popularity correlation of approximately <b>r = 0.147</b> in its completed analysis. Recalculate it on the same processed dataset and report your own result. This is a weak positive relationship, not proof that energy causes popularity. Tell the leader if your figure differs materially and compare filters/missing-value handling before deciding which number to use.</div>
+    <h3>Member 2 — exact deliverables</h3>
+    <ul class="checklist"><li><code>notebooks/07_Member2_Bivariate.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/bivariate/</code></li><li><code>outputs/reports/MEMBER2_BIVARIATE_SUMMARY.md</code></li><li>A small correlation-results table with pair, coefficient and valid sample size</li><li>2–3 PPT slides: relationships, heatmap and key findings</li></ul>
+  </div>
+</section>
+
+<section id="member3" class="grid">
+  <div class="card span-12">
+    <div class="member-title"><div><span class="tag">Assignment 03</span><h2>Member 3 — Multivariate & Outlier Analysis</h2><p class="muted">Your job is to explore three or more variables together and identify unusual observations without automatically treating them as errors.</p></div><span class="member-num">Member 3</span></div>
+    <h3>Part A — Multivariate graphs</h3>
+    <div class="table-wrap"><table><thead><tr><th>Chart</th><th>Variables used</th><th>What it should show</th><th>Output</th></tr></thead><tbody>
+      <tr><td>1. Bubble scatter plot</td><td>X = danceability; Y = energy; bubble size = popularity; colour = valence</td><td>How multiple musical characteristics are distributed together. Explain the size and colour legends.</td><td><code>multivariate_bubble_chart.png</code></td></tr>
+      <tr><td>2. Artist-language heatmap</td><td>Artist, language, track count</td><td>Which languages are represented among the most frequent artists in this dataset.</td><td><code>artist_language_heatmap.png</code></td></tr>
+      <tr><td>3. Pair plot (optional if time)</td><td>Energy, danceability, valence, popularity</td><td>Small pairwise plots showing distributions and relationships among several variables.</td><td><code>audio_features_pairplot.png</code></td></tr>
+    </tbody></table></div>
+    <h3>Bubble chart starter code</h3>
+    <pre>plot_data = df[["danceability", "energy", "popularity", "valence"]].dropna()
+plot_sample = plot_data.sample(n=min(3000, len(plot_data)), random_state=42)
+
+plt.figure(figsize=(9, 6))
+plt.scatter(
+    plot_sample["danceability"],
+    plot_sample["energy"],
+    s=plot_sample["popularity"] * 2 + 10,
+    c=plot_sample["valence"],
+    alpha=0.4,
+    cmap="viridis"
+)
+plt.colorbar(label="Valence")
+plt.title("Danceability vs Energy: Size = Popularity, Colour = Valence")
+plt.xlabel("Danceability")
+plt.ylabel("Energy")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/multivariate/multivariate_bubble_chart.png", dpi=180)
+plt.show()</pre>
+    <p class="muted small">The sample is for display readability. Do not describe it as the entire dataset if a sample was used. Explain that bubble size represents popularity and colour represents valence.</p>
+    <h3>Artist-language heatmap instructions</h3>
+    <ol><li>Check the exact artist and language column names using `df.columns`.</li><li>Find the 10 artists with the largest number of track records.</li><li>Find the 6 most common language labels.</li><li>Filter to those artists and languages.</li><li>Use `pd.crosstab()` to count artist-language combinations.</li><li>Plot the resulting table with `sns.heatmap()`.</li></ol>
+    <pre>top_artists = df["artist_name"].value_counts().head(10).index
+top_languages = df["language"].value_counts().head(6).index
+
+small_data = df[
+    df["artist_name"].isin(top_artists) &
+    df["language"].isin(top_languages)
+]
+
+artist_language_counts = pd.crosstab(
+    small_data["artist_name"], small_data["language"]
+)
+
+plt.figure(figsize=(10, 6))
+sns.heatmap(artist_language_counts, annot=True, fmt="d", cmap="YlGnBu")
+plt.title("Track Count by Artist and Language")
+plt.xlabel("Language")
+plt.ylabel("Artist")
+plt.tight_layout()
+plt.savefig("../outputs/graphs/multivariate/artist_language_heatmap.png", dpi=180)
+plt.show()</pre>
+    <p class="muted small">If the actual artist column name is not `artist_name`, use the exact field in the data dictionary. If an artist has multiple names combined in one cell, do not split them unless you understand and document the method.</p>
+    <h3>Part B — Outlier analysis using IQR</h3>
+    <p>Use the IQR method on selected numeric features such as popularity, energy, danceability and tempo. The IQR is the distance between the 75th percentile (Q3) and 25th percentile (Q1).</p>
+    <p><code>Lower bound = Q1 − 1.5 × IQR</code> and <code>Upper bound = Q3 + 1.5 × IQR</code>. Values outside these bounds are flagged as potential outliers for this rule.</p>
+    <pre>columns_to_check = ["popularity", "energy", "danceability", "tempo"]
+
+for column in columns_to_check:
+    values = df[column].dropna()
+
+    q1 = values.quantile(0.25)
+    q3 = values.quantile(0.75)
+    iqr = q3 - q1
+
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+
+    outliers = values[(values < lower_bound) | (values > upper_bound)]
+
+    print(column)
+    print("Lower bound:", lower_bound)
+    print("Upper bound:", upper_bound)
+    print("Outlier count:", len(outliers))
+    print("Outlier percentage:", round(len(outliers) / len(values) * 100, 2))
+    print("----------------------")</pre>
+    <h3>Outlier graphs and interpretation</h3>
+    <ul><li>Create boxplots for at least popularity, energy and danceability.</li><li>Make a small table of outlier count and percentage for each feature.</li><li>Explain which features have the largest number or percentage of flagged values.</li><li>Optionally compare language or audio-feature distributions for flagged and non-flagged records, making clear which variable was used to define an outlier.</li></ul>
+    <div class="danger"><b>Do not delete outliers automatically.</b> An unusual value may be a valid unusual song, not a data error. The IQR rule only flags extreme values relative to a distribution. Keep the master dataset unchanged and report your findings separately.</div>
+    <h3>Member 3 — exact deliverables</h3>
+    <ul class="checklist"><li><code>notebooks/08_Member3_Multivariate_Outliers.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/multivariate/</code> and <code>outputs/graphs/outliers/</code></li><li><code>outputs/reports/MEMBER3_MULTIVARIATE_OUTLIER_SUMMARY.md</code></li><li>Outlier table with Q1, Q3, IQR, bounds, count and percentage</li><li>2–3 PPT slides: multivariate findings and outlier results</li></ul>
+  </div>
+</section>
+
+<section id="handoff" class="grid">
+  <div class="card span-12">
+    <span class="tag">Required from everyone</span>
+    <h2>Exact submission and handoff checklist</h2>
+    <p>Send the following items to the team leader. A screenshot alone is not a complete submission.</p>
+    <div class="table-wrap"><table><thead><tr><th>Item</th><th>Required format</th><th>What the leader will check</th></tr></thead><tbody>
+      <tr><td>Notebook</td><td><code>.ipynb</code></td><td>Runs from first cell to last cell using the shared processed dataset.</td></tr>
+      <tr><td>Charts</td><td><code>.png</code></td><td>Readable title, axes, legend where needed, and consistent file naming.</td></tr>
+      <tr><td>Written summary</td><td><code>.md</code> or <code>.docx</code></td><td>Each chart has interpretation, evidence, insight and limitation.</td></tr>
+      <tr><td>Statistics</td><td>Table in notebook/summary</td><td>Numbers are generated from the dataset, not copied from the senior PPT.</td></tr>
+      <tr><td>PPT contribution</td><td>2–3 slides or slide content</td><td>Charts match the notebook and text is concise.</td></tr>
+      <tr><td>Viva notes</td><td>5–8 likely questions and answers</td><td>You can explain your own method and graphs.</td></tr>
+    </tbody></table></div>
+    <h3>Suggested shared folder structure</h3>
+    <pre>Spotify_EDA_Project/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── notebooks/
+│   ├── 05_Temporal_Analysis.ipynb       # Leader
+│   ├── 06_Member1_Univariate.ipynb
+│   ├── 07_Member2_Bivariate.ipynb
+│   └── 08_Member3_Multivariate_Outliers.ipynb
+├── outputs/
+│   ├── graphs/
+│   │   ├── temporal/
+│   │   ├── univariate/
+│   │   ├── bivariate/
+│   │   ├── multivariate/
+│   │   └── outliers/
+│   └── reports/
+└── presentation/
+    └── Spotify_EDA_Draft.pptx</pre>
+    <h3>Quality checklist before you send work to the leader</h3>
+    <ul class="checklist"><li>I used the shared processed CSV, not a separately cleaned version.</li><li>My notebook runs in order without errors.</li><li>All graphs are saved in the correct folder.</li><li>All graphs have titles and labelled axes.</li><li>Every interpretation refers to the actual graph.</li><li>I included real values/counts/sample sizes where relevant.</li><li>I did not claim correlation proves causation.</li><li>I did not remove outliers or edit the shared dataset.</li><li>I wrote a short summary and prepared my presentation slides.</li><li>I can explain the code and graphs without reading the notebook line by line.</li></ul>
+  </div>
+</section>
+
+<section id="schedule" class="grid">
+  <div class="card span-12">
+    <span class="tag">Urgent schedule</span>
+    <h2>Internal deadlines before the 25 November submission</h2>
+    <div class="table-wrap"><table><thead><tr><th>Date</th><th>All members</th><th>Team leader's action</th><th>Expected state</th></tr></thead><tbody>
+      <tr><td><b>22 Nov — current</b></td><td>Confirm access to the shared project and begin the assigned notebook.</td><td>Project foundation and leader analysis are prepared; collect teammate confirmations and resolve access blockers.</td><td>Leader deliverables are ready. Member 1, 2 and 3 analysis handoffs are still pending in the tracker.</td></tr>
+      <tr><td><b>23 Nov</b></td><td>Complete analysis, save graphs, calculate statistics and write interpretations.</td><td>Review initial findings; ask for correction where numbers/claims do not match.</td><td>All notebooks and analysis drafts submitted by end of day.</td></tr>
+      <tr><td><b>24 Nov</b></td><td>Fix feedback, prepare slides and viva notes.</td><td>Integrate PPT, verify consistency, arrange rehearsal.</td><td>All final materials delivered to leader; presentation ready.</td></tr>
+      <tr><td><b>25 Nov</b></td><td>Be available for last-minute corrections and presentation.</td><td>Final check and submission.</td><td>Submit the project.</td></tr>
+    </tbody></table></div>
+    <div class="notice"><strong>Internal deadline:</strong> Send completed notebooks, graphs and written summaries to the leader by the end of 23 November. Do not wait until 25 November to send your work. The team needs 24 November for verification and PPT integration.</div>
+  </div>
+  <div class="card span-6">
+    <h2>What the team leader will do</h2>
+    <ul><li>Maintain one master processed dataset.</li><li>Review the three notebooks and their outputs.</li><li>Resolve conflicting statistics using consistent filters.</li><li>Combine findings with the already completed temporal analysis.</li><li>Write final evidence-based recommendations.</li><li>Replace placeholders in the draft PPT and rehearse the presentation.</li></ul>
+  </div>
+  <div class="card span-6">
+    <h2>What each member must be ready to explain</h2>
+    <ul><li>Why you selected each graph.</li><li>What its axes and visual encodings mean.</li><li>What the graph actually shows.</li><li>What statistic supports your interpretation.</li><li>What limitation or caution applies.</li><li>What practical recommendation follows, if any.</li></ul>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="card span-12">
+    <h2>Final message to the team</h2>
+    <p>This is a shared project, so the sections must fit together. Use the same processed dataset and consistent column definitions. Make a smaller number of correct, well-explained graphs rather than many weak graphs. The goal is not just to show plots; the goal is to explain what the data tells us and what we can responsibly recommend from it.</p>
+    <p><b>Do your assigned section end-to-end:</b> shared processed data → code → graph → interpretation → insight → slide → viva preparation. Use the dated verified facts below as checks; recalculate your own section from the processed CSV.</p>
+    <div class="success"><b>Submission reminder:</b> 25 November 2026. Internal handoff to the leader: end of 23 November. Final corrections and PPT integration: 24 November.</div>
+  </div>
+</section>
+<div class="footer">Spotify EDA Team Work Guide · Grounded to project files and verified results as of 22 November 2026 · Reference project: Adrija-verse/EDA_Project1_SpotifyTracks</div>
+</div>
+</body>
+</html>
