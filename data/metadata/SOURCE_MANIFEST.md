@@ -4,6 +4,8 @@ Repository: https://github.com/Adrija-verse/EDA_Project1_SpotifyTracks
 Clone URL: https://github.com/Adrija-verse/EDA_Project1_SpotifyTracks.git
 Files were cloned from the repository's `main` branch at commit `7867c8b74a49df9fd2df56440b7fa372a989bb10` and copied into the project without changing the raw CSV. The separate working clone is `D:\MANHATTAN\Spotify_EDA_Reference`.
 
+The problem statement later supplied `D:\MANHATTAN\spotify_dataset\spotify_tracks.csv` and its data dictionary. Both supplied files were compared with the reference copies: CSV row order and all parsed values match exactly; byte-level differences are line endings. Root-level `spotify_tracks.csv` and `spotify_data_description.csv` are copies of the problem-statement files and are the notebook inputs.
+
 | Resource | Repository file | Direct URL | Local project copy |
 |---|---|---|---|
 | Dataset | `spotify_tracks.csv` | https://raw.githubusercontent.com/Adrija-verse/EDA_Project1_SpotifyTracks/main/spotify_tracks.csv | `data/raw/spotify_tracks.csv` |

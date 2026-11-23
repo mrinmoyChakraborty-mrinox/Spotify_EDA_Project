@@ -2,7 +2,9 @@
 
 ## Files acquired
 
-- `data/raw/spotify_tracks.csv` - original file, preserved unchanged.
+- `spotify_tracks.csv` - problem-statement supplied raw file, copied unchanged to the project root.
+- `spotify_data_description.csv` - problem-statement supplied data dictionary, copied unchanged to the project root.
+- Root-level supplied CSV and the reference-repository CSV have identical parsed rows and values; their byte-level difference is line endings only.
 - `data/metadata/spotify_data_description.csv` - data dictionary.
 - `notebooks/reference_senior_eda.ipynb` - senior's 214-cell notebook.
 - `presentation/reference_senior_presentation.pdf` - senior's 38-page PDF.
@@ -28,17 +30,22 @@ Raw data has 62,317 rows and 22 columns, years 1971-2024. It has 78 exact repeat
 
 ## Completed deliverables
 
-- Beginner-friendly temporal notebook, executed and saved with cell outputs.
+- `Spotify_EDA.ipynb` - one consolidated, root-level integration notebook; its executable data inspection, cleaning, correlation evidence, and temporal cells have been run. Member 1–3 analysis sections remain marked pending.
 - Cleaned dataset copy, dataset profile, temporal report, recommendation report and evidence CSV.
+- Root-level notebook and data files now follow the flat, notebook-centered layout of the supplied reference repository.
 - Code explanation with viva questions, reference audit, six temporal graphs, team tracker, handoff template, integration checklist, requirements, and editable 18-slide PPTX draft.
+
+## Final submission note
+
+The problem statement requires one consolidated Jupyter notebook, one subjective-answer PDF, and a README. The PDF and teammate sections are still pending; the current root notebook is an integration draft, not a finished submission.
 
 ## Teammate tasks remaining
 
-Member 1: complete cleaning and univariate analysis, then submit notebook, source, graph images, numerical findings, recommendations, and limitations.
+Member 1: complete cleaning review and univariate analysis, then submit code/Markdown, graph images, numerical findings, recommendations, and limitations for integration into the single root-level `Spotify_EDA.ipynb`.
 
-Member 2: complete bivariate analysis with sample sizes and correlation caveats; submit the same handoff items.
+Member 2: complete bivariate analysis with sample sizes and correlation caveats; submit code/Markdown, graphs, findings, and limitations for integration into the single root-level `Spotify_EDA.ipynb`.
 
-Member 3: complete multivariate and outlier analysis, state the outlier rule, and distinguish errors from valid unusual tracks.
+Member 3: complete multivariate and outlier analysis, state the outlier rule, and distinguish errors from valid unusual tracks; submit all evidence for integration into the single root-level `Spotify_EDA.ipynb`.
 
 ## Leader tasks remaining
 

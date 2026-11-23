@@ -18,10 +18,10 @@
   <h1>Spotify EDA<br>Team Work Guide</h1>
   <p>Clear instructions for all three analysis members: what to analyze, how to code it, which graphs to produce, what to write, and exactly what to hand over to the team leader.</p>
   <div class="pills"><span class="pill">4-member team</span><span class="pill">Deadline: 25 November 2026</span><span class="pill">Python · Pandas · Matplotlib · Seaborn</span><span class="pill">Beginner-friendly workflow</span></div>
-  <nav class="toc"><a href="#verified">Verified facts</a><a href="#common">Common rules</a><a href="#member1">Member 1</a><a href="#member2">Member 2</a><a href="#member3">Member 3</a><a href="#handoff">Submission checklist</a><a href="#schedule">Timeline</a></nav>
+  <nav class="toc"><a href="#verified">Verified facts</a><a href="#official">Official requirements</a><a href="#common">Common rules</a><a href="#member1">Member 1</a><a href="#member2">Member 2</a><a href="#member3">Member 3</a><a href="#handoff">Submission checklist</a><a href="#schedule">Timeline</a></nav>
 </header>
 
-<div class="notice"><strong>Current project state — 22 November 2026:</strong> The leader has prepared the data foundation, temporal analysis, recommendation evidence, team documents, and a presentation draft. The three member analysis sections are still awaiting handoff. Do not treat any teammate analysis as complete until its notebook and evidence have been received and reviewed. Use the processed CSV as a read-only shared dataset.</div>
+<div class="notice"><strong>Current project state — 22 November 2026:</strong> The leader has prepared the data foundation, a root-level consolidated notebook draft, temporal analysis, recommendation evidence, team documents, and a presentation draft. The three member analysis sections are still awaiting handoff. Final submission must contain one consolidated `Spotify_EDA.ipynb`; members may use temporary notebooks to work, but their reviewed code and results must be integrated into that notebook. Use the processed CSV as a read-only shared dataset.</div>
 
 <section id="verified" class="grid">
   <div class="card span-12">
@@ -44,6 +44,68 @@
     <p><b>Interpretation rule:</b> English has the largest number of tracks; Korean has the highest average popularity in this file. Neither volume nor group average explains why a track is popular. Language groups have very different sample sizes and may differ in artist reach, track age, promotion, and coverage.</p>
     <div class="danger"><b>Senior reference corrections:</b> Do not copy every claim from the senior notebook or PDF. The PDF describes 1975 popularity as about 17.5, while this CSV gives 37.37 for 19 tracks. It calls Korean popularity “narrow and low,” while the processed file has the highest language mean for Korean. The PDF also recommends raising energy or copying a “Korean model”; the weak observational correlation above does not support a causal claim.</div>
     <p class="muted small">Source files and calculations: <code>outputs/reports/DATASET_PROFILE.md</code>, <code>TEMPORAL_ANALYSIS_REPORT.md</code>, <code>RECOMMENDATION_EVIDENCE.md</code>, <code>REFERENCE_AUDIT.md</code>, <code>outputs/tables/language_summary.csv</code>, and <code>temporal_yearly_summary.csv</code>. If your recalculation differs, compare the raw/processed file, filters, and missing-value handling with the leader before changing a result.</p>
+  </div>
+</section>
+
+<section id="official" class="grid">
+  <div class="card span-12">
+    <span class="tag">Official problem statement alignment</span>
+    <h2>What the assignment actually evaluates</h2>
+    <p>This section reflects the problem statement supplied on 22 November 2026. The assignment's questions and example hypotheses describe what to investigate; their example values and suggested conclusions are <b>not project findings</b>.</p>
+    <div class="kpis"><div class="kpi"><b>30%</b><span>Data understanding and initial insights</span></div><div class="kpi"><b>25%</b><span>Visualization and pattern identification</span></div><div class="kpi"><b>20%</b><span>Statistical analysis and hypotheses</span></div></div>
+    <div class="twocol">
+      <div class="success"><div class="callout-title">15% — Storytelling and recommendations</div><p>Use plain language, tie each recommendation to verified results, and quantify impact only when the project has a defensible calculation. Do not invent business value.</p></div>
+      <div class="success"><div class="callout-title">10% — Coding and documentation</div><p>Keep code readable, use clear names and comments, follow PEP 8, and use small reusable functions only where they make the notebook easier to follow.</p></div>
+    </div>
+    <h3>Final submission format required by the statement</h3>
+    <ul><li><b>One well-commented Jupyter notebook</b> containing the consolidated project code and analysis.</li><li><b>One PDF</b> with comprehensive answers to the subjective questions.</li><li><b>README.md</b> with project overview and run instructions.</li></ul>
+    <p>The team's separate member notebooks and the editable PPT draft are useful work and presentation materials. They do not replace the required consolidated notebook or subjective-answer PDF. Both final files are still pending integration.</p>
+    <h3>Coverage map for the assigned team</h3>
+    <div class="table-wrap"><table><thead><tr><th>Owner</th><th>Official questions to cover</th><th>Current project state</th></tr></thead><tbody>
+      <tr><td>Member 1 — Univariate</td><td>Profile popularity, duration, key, tempo, acousticness, loudness, danceability, energy, time signature, speechiness, valence, instrumentalness, liveness, mode, and language. Report summary statistics and distributions; use processed data.</td><td>Pending teammate handoff. Current guide's original short chart list should be expanded to cover these variables, or document a clear reason for any omission.</td></tr>
+      <tr><td>Member 2 — Bivariate</td><td>Test duration/popularity; audio features/popularity; language/popularity; key/mode/time signature/popularity; and feature-to-feature relationships requested in the statement. Report valid pair counts and association strength.</td><td>Pending teammate handoff. The current selected charts are a starting set, not full coverage of every question.</td></tr>
+      <tr><td>Member 3 — Multivariate and outliers</td><td>Explore feature combinations, especially top popularity quartile by danceability/energy/valence; acousticness/instrumentalness/speechiness; language-specific feature averages; and high-popularity duration/liveness by decade. State the outlier rule and inspect flagged records.</td><td>Pending teammate handoff. Do not describe a cluster or “recipe” unless the chosen method and evidence support it.</td></tr>
+      <tr><td>Leader — Temporal and integration</td><td>Popularity by year is already covered. The official statement also asks about temporal duration, loudness, tempo, audio-feature trends, language prevalence, and changing feature relationships. Coordinate any additional temporal plots with members to avoid gaps or duplicate work.</td><td>Four annual trends are already in the leader notebook (popularity, energy, danceability, valence). Broader official temporal coverage remains to review and integrate.</td></tr>
+    </tbody></table></div>
+    <h3>Complete question-to-owner distribution</h3>
+    <p>These are the question areas from the official statement. Use them to supplement the chart lists below. Combine related questions in clear graphs where appropriate; the final PDF still needs a concise answer for every listed question. If a question cannot be answered from this dataset, say why rather than inventing an answer.</p>
+    <div class="table-wrap"><table><thead><tr><th>Owner / section</th><th>Questions to answer from the official statement</th></tr></thead><tbody>
+      <tr><td><b>Member 1<br>Univariate</b></td><td><ol>
+        <li>What is the popularity distribution?</li><li>What are average duration and typical range?</li><li>Which musical keys occur most often?</li><li>How is tempo distributed?</li><li>How is acousticness distributed?</li><li>What are typical loudness levels and range?</li><li>How is danceability distributed?</li><li>How is energy distributed?</li><li>Which time signatures are most common?</li><li>How is speechiness distributed?</li><li>How is valence distributed?</li><li>How is instrumentalness distributed?</li><li>How is liveness distributed?</li><li>Which mode is most common?</li><li>What are the median and quartiles for popularity and duration?</li><li>What is the modal energy value? Since energy is continuous, define bins before reporting a mode, or explain why this statistic is not useful.</li><li>How many tracks are in each language category?</li>
+      </ol>Include mean, median, standard deviation and IQR where useful; use histograms/KDEs, boxplots, and frequency charts. Check units and the sentinel cleanup first.</td></tr>
+      <tr><td><b>Member 2<br>Bivariate</b></td><td><ol>
+        <li>Is duration associated with popularity?</li><li>How is danceability associated with popularity?</li><li>How is energy associated with popularity?</li><li>How is loudness associated with popularity?</li><li>How is acousticness associated with popularity?</li><li>How is valence associated with popularity?</li><li>How is instrumentalness associated with popularity?</li><li>How is liveness associated with popularity?</li><li>How is tempo associated with popularity?</li><li>How do popularity distributions differ by language?</li><li>How does popularity vary by key and mode?</li><li>Does popularity differ by time signature?</li>
+      </ol>Use scatter plots for continuous pairs and grouped distribution plots for categories. Include valid pair counts. Pearson measures linear association; Spearman can check rank-based association. Do not describe correlations as influence or cause.</td></tr>
+      <tr><td><b>Member 3<br>Multivariate / outliers</b></td><td><ol>
+        <li>For the highest popularity quartile, how do danceability, energy and valence combine? Define the quartile cutoff from the processed data.</li><li>Do acousticness, instrumentalness and speechiness show useful combinations or clusters related to popularity? Describe the grouping method; do not claim clusters without a method.</li><li>Among high-popularity tracks, how do loudness, tempo and mode compare?</li><li>How do danceability, energy and valence among popular tracks vary across language categories?</li><li>Repeat/confirm the acousticness-instrumentalness-speechiness profile question, since it appears twice in the statement.</li><li>Repeat/confirm the loudness-tempo-mode profile question, also listed twice.</li><li>How do key, mode and time signature jointly relate to popularity?</li><li>Across decades, how do duration and liveness compare for high-popularity tracks?</li>
+      </ol>Also complete the assigned outlier review. State the IQR or other rule, report counts and percentages, and inspect flagged records. An IQR flag is not proof of an error.</td></tr>
+      <tr><td><b>Leader<br>Temporal / integration</b></td><td><ol>
+        <li>How has average popularity changed by release year?</li><li>Have energy or danceability levels among popular tracks changed by year?</li><li>Have key frequencies or tempo ranges changed over time?</li><li>How has duration among popular tracks changed?</li><li>How have acousticness and instrumentalness changed among popular tracks?</li><li>How has valence changed over time?</li><li>How has average loudness changed over time?</li><li>How has liveness among popular tracks changed?</li><li>How have language counts/shares changed over time?</li><li>How has speechiness changed over time?</li><li>Has the energy-danceability relationship changed over time?</li>
+      </ol>The current notebook covers track counts and yearly popularity, energy, danceability and valence averages. The remaining official time-series questions are still to be completed or explicitly marked out of scope with the team. For questions about “popular tracks,” define a consistent cutoff (for example, the dataset's top popularity quartile), show yearly sample counts, and say that popularity is a current score rather than a score measured at release.</td></tr>
+    </tbody></table></div>
+    <h3>Hypotheses and recommendation examples: verify before using</h3>
+    <p>The statement's six hypothesis examples and four recommendation examples are suggestions to investigate, not expected results. In the final answers, mark each one as supported, not supported, or not testable with this dataset.</p>
+    <ul>
+      <li>Popularity mean above median: this is consistent with the processed data (mean 15.36, median 7), but describe the observed distribution rather than claiming statistical significance without a test.</li>
+      <li>Most durations between 3 and 4 minutes: check the processed median, quartiles, and plot before claiming this.</li>
+      <li>Energy-danceability correlation above 0.7: not supported as written; the processed-data Pearson correlation is about 0.466.</li>
+      <li>English versus Spanish popularity: Spanish is not a category in this CSV. Compare only available language labels and state their sample sizes.</li>
+      <li>Loudness outliers: run the selected rule on cleaned loudness values; the -100,000 sentinel was already converted to missing.</li>
+      <li>Most common time signature is 4/4: verify the frequency table rather than assuming it.</li>
+      <li>Do not repeat sample recommendations that assert energy/danceability cutoffs, rising language trends, louder/shorter modern tracks, or bimodal speechiness unless your analysis verifies them. Describe controlled tests and success metrics instead of fabricated business impact.</li>
+    </ul>
+    <h3>Submission and deadline rules from the official statement</h3>
+    <ul><li>Deadline: <b>25 November 2026</b>.</li><li>Within one week late: the statement says a 30% penalty applies. More than one week late: it says the submission will not be accepted.</li><li>Final repository must contain one consolidated, well-commented notebook, one PDF with answers to all subjective questions, and a README. The team PPT is supplementary and does not replace these three items.</li><li>Submit the repository link through the project upload form.</li></ul>
+    <p class="muted small">For numerical variable routines, exclude URL fields such as <code>artwork_url</code> and <code>track_url</code> from the analysis table; keep the raw CSV and the shared processed CSV unchanged. Preserve identifiers where they are needed to check duplicate tracks or describe examples.</p>
+    <h3>Examples in the problem statement are hypotheses, not answers</h3>
+    <div class="danger"><ul>
+      <li>The example “strong” energy/danceability correlation above 0.7 is not the dataset result: the processed file gives about <b>r = 0.466</b>. This describes a positive association, not causation.</li>
+      <li>The example about English versus Spanish is not applicable as written: the dataset's language labels are English, Unknown, Tamil, Korean, Hindi, Telugu, and Malayalam; there is no Spanish category.</li>
+      <li>Claims that top-quartile tracks should exceed energy 0.8 or danceability 0.7, that loudness rose over time, that songs became shorter, language segments are growing, or speechiness is bimodal must be tested against the actual data before being reported. Likewise, count key and time_signature values before saying which is most common.</li>
+      <li>“Modal energy” is not meaningful for a continuous feature unless values are first grouped into defined bins. If used, explain the bins; otherwise report the distribution and quartiles.</li>
+      <li>Use “associated with” rather than “drives,” “impact,” or “influences” unless a causal design supports that wording. This is exploratory observational data.</li>
+    </ul></div>
+    <p class="muted small">For the official variable definitions, use <code>data/metadata/spotify_data_description.csv</code>. For verified project values and reference disagreements, use the reports listed above. Do not silently treat the senior PDF or the prompt's illustrative recommendations as ground truth.</p>
   </div>
 </section>
 
@@ -93,7 +155,7 @@ print(df.columns.tolist())</pre>
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-jupyter notebook</pre>
+jupyter notebook Spotify_EDA.ipynb</pre>
     <p class="muted small">Use your own project-folder path on your computer. Create a separate virtual environment on each member’s computer; do not copy the leader’s .venv folder. If PowerShell blocks activation, use the process-only command in README.md or ask the leader for help.</p>
   </div>
   <div class="card span-6">
@@ -162,7 +224,7 @@ plt.show()</pre>
     <h3>What you must write for each chart</h3>
     <ul><li>Describe whether the values are concentrated, spread out or skewed.</li><li>Report useful statistics such as mean, median, minimum and maximum where relevant.</li><li>For language/artist counts, include actual counts and percentages if possible.</li><li>Do not call a language or artist “successful” based only on the number of rows.</li></ul>
     <h3>Member 1 — exact deliverables</h3>
-    <ul class="checklist"><li><code>notebooks/06_Member1_Univariate.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/univariate/</code></li><li><code>outputs/reports/MEMBER1_UNIVARIATE_SUMMARY.md</code></li><li>A short data-quality verification note listing any mismatch with the leader's report</li><li>2–3 PPT slides: data quality/cleaning summary and univariate findings</li></ul>
+    <ul class="checklist"><li>Member 1 section integrated into root <code>Spotify_EDA.ipynb</code> (a temporary working notebook may be used for drafting)</li><li>All PNG charts in <code>outputs/graphs/univariate/</code></li><li><code>outputs/reports/MEMBER1_UNIVARIATE_SUMMARY.md</code></li><li>A short data-quality verification note listing any mismatch with the leader's report</li><li>2–3 PPT slides: data quality/cleaning summary and univariate findings</li></ul>
   </div>
 </section>
 
@@ -224,7 +286,7 @@ plt.show()</pre>
     <ul><li>For each pair, report the correlation coefficient and classify it carefully as weak, moderate or strong based on its magnitude and context.</li><li>State how many valid rows were used for the calculation.</li><li>Describe whether the scatter plot shows a clear pattern, a broad cloud or possible clusters.</li><li>For language comparisons, show the number of tracks per language and avoid conclusions from tiny groups.</li><li>Explain that Pearson correlation measures linear association and is sensitive to unusual values.</li></ul>
     <div class="notice"><strong>Leader's preliminary result:</strong> Codex reports an energy–popularity correlation of approximately <b>r = 0.147</b> in its completed analysis. Recalculate it on the same processed dataset and report your own result. This is a weak positive relationship, not proof that energy causes popularity. Tell the leader if your figure differs materially and compare filters/missing-value handling before deciding which number to use.</div>
     <h3>Member 2 — exact deliverables</h3>
-    <ul class="checklist"><li><code>notebooks/07_Member2_Bivariate.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/bivariate/</code></li><li><code>outputs/reports/MEMBER2_BIVARIATE_SUMMARY.md</code></li><li>A small correlation-results table with pair, coefficient and valid sample size</li><li>2–3 PPT slides: relationships, heatmap and key findings</li></ul>
+    <ul class="checklist"><li>Member 2 section integrated into root <code>Spotify_EDA.ipynb</code> (a temporary working notebook may be used for drafting)</li><li>All PNG charts in <code>outputs/graphs/bivariate/</code></li><li><code>outputs/reports/MEMBER2_BIVARIATE_SUMMARY.md</code></li><li>A small correlation-results table with pair, coefficient and valid sample size</li><li>2–3 PPT slides: relationships, heatmap and key findings</li></ul>
   </div>
 </section>
 
@@ -308,7 +370,7 @@ for column in columns_to_check:
     <ul><li>Create boxplots for at least popularity, energy and danceability.</li><li>Make a small table of outlier count and percentage for each feature.</li><li>Explain which features have the largest number or percentage of flagged values.</li><li>Optionally compare language or audio-feature distributions for flagged and non-flagged records, making clear which variable was used to define an outlier.</li></ul>
     <div class="danger"><b>Do not delete outliers automatically.</b> An unusual value may be a valid unusual song, not a data error. The IQR rule only flags extreme values relative to a distribution. Keep the master dataset unchanged and report your findings separately.</div>
     <h3>Member 3 — exact deliverables</h3>
-    <ul class="checklist"><li><code>notebooks/08_Member3_Multivariate_Outliers.ipynb</code></li><li>All PNG charts in <code>outputs/graphs/multivariate/</code> and <code>outputs/graphs/outliers/</code></li><li><code>outputs/reports/MEMBER3_MULTIVARIATE_OUTLIER_SUMMARY.md</code></li><li>Outlier table with Q1, Q3, IQR, bounds, count and percentage</li><li>2–3 PPT slides: multivariate findings and outlier results</li></ul>
+    <ul class="checklist"><li>Member 3 section integrated into root <code>Spotify_EDA.ipynb</code> (a temporary working notebook may be used for drafting)</li><li>All PNG charts in <code>outputs/graphs/multivariate/</code> and <code>outputs/graphs/outliers/</code></li><li><code>outputs/reports/MEMBER3_MULTIVARIATE_OUTLIER_SUMMARY.md</code></li><li>Outlier table with Q1, Q3, IQR, bounds, count and percentage</li><li>2–3 PPT slides: multivariate findings and outlier results</li></ul>
   </div>
 </section>
 
@@ -318,7 +380,7 @@ for column in columns_to_check:
     <h2>Exact submission and handoff checklist</h2>
     <p>Send the following items to the team leader. A screenshot alone is not a complete submission.</p>
     <div class="table-wrap"><table><thead><tr><th>Item</th><th>Required format</th><th>What the leader will check</th></tr></thead><tbody>
-      <tr><td>Notebook</td><td><code>.ipynb</code></td><td>Runs from first cell to last cell using the shared processed dataset.</td></tr>
+      <tr><td>Notebook section</td><td>Code and Markdown handoff</td><td>Member work is reviewed and integrated into the one root-level <code>Spotify_EDA.ipynb</code>; do not submit separate member notebooks.</td></tr>
       <tr><td>Charts</td><td><code>.png</code></td><td>Readable title, axes, legend where needed, and consistent file naming.</td></tr>
       <tr><td>Written summary</td><td><code>.md</code> or <code>.docx</code></td><td>Each chart has interpretation, evidence, insight and limitation.</td></tr>
       <tr><td>Statistics</td><td>Table in notebook/summary</td><td>Numbers are generated from the dataset, not copied from the senior PPT.</td></tr>
@@ -327,24 +389,17 @@ for column in columns_to_check:
     </tbody></table></div>
     <h3>Suggested shared folder structure</h3>
     <pre>Spotify_EDA_Project/
-├── data/
-│   ├── raw/
-│   └── processed/
-├── notebooks/
-│   ├── 05_Temporal_Analysis.ipynb       # Leader
-│   ├── 06_Member1_Univariate.ipynb
-│   ├── 07_Member2_Bivariate.ipynb
-│   └── 08_Member3_Multivariate_Outliers.ipynb
-├── outputs/
-│   ├── graphs/
-│   │   ├── temporal/
-│   │   ├── univariate/
-│   │   ├── bivariate/
-│   │   ├── multivariate/
-│   │   └── outliers/
-│   └── reports/
-└── presentation/
-    └── Spotify_EDA_Draft.pptx</pre>
+├── Spotify_EDA.ipynb                 # One consolidated project notebook
+├── spotify_tracks.csv                # Supplied raw dataset
+├── spotify_data_description.csv      # Supplied data dictionary
+├── README.md
+├── Spotify_EDA_Subjective_Answers.pdf # Add after final analysis integration
+├── data/                              # Working raw/processed copies
+├── outputs/                           # Supporting graphs, tables and reports
+├── team/                              # Coordination and handoff documents
+└── presentation/                      # Editable presentation draft
+
+Temporary member notebooks may be used while working, but integrate reviewed content into Spotify_EDA.ipynb before final submission.</pre>
     <h3>Quality checklist before you send work to the leader</h3>
     <ul class="checklist"><li>I used the shared processed CSV, not a separately cleaned version.</li><li>My notebook runs in order without errors.</li><li>All graphs are saved in the correct folder.</li><li>All graphs have titles and labelled axes.</li><li>Every interpretation refers to the actual graph.</li><li>I included real values/counts/sample sizes where relevant.</li><li>I did not claim correlation proves causation.</li><li>I did not remove outliers or edit the shared dataset.</li><li>I wrote a short summary and prepared my presentation slides.</li><li>I can explain the code and graphs without reading the notebook line by line.</li></ul>
   </div>

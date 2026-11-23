@@ -1,33 +1,37 @@
 # Spotify Tracks EDA Project
 
-A four-member college project analyzing Spotify track metadata. The raw CSV is preserved in `data/raw/`; analysis output and source references are stored separately. The primary leader contribution is the beginner-friendly temporal notebook.
+This is a four-member exploratory analysis of Spotify track data. The final analysis belongs in one consolidated, beginner-readable notebook at the project root: `Spotify_EDA.ipynb`.
 
-## Setup (Windows PowerShell)
+## Submission layout
+
+The flat root-level files follow the layout of the supplied reference repository:
+
+- `Spotify_EDA.ipynb` — the single consolidated notebook for data inspection, cleaning, Univariate, Bivariate, Multivariate, Temporal analysis, findings, and recommendations.
+- `spotify_tracks.csv` — copy of the dataset supplied with the problem statement; use as the raw input and do not overwrite it.
+- `spotify_data_description.csv` — data dictionary supplied with the problem statement.
+- `README.md` — project and run instructions.
+- `Spotify_EDA_Subjective_Answers.pdf` — required final PDF answering the subjective questions; **not ready yet** because the teammate sections are still awaiting integration.
+
+The final submission follows the reference repository's flat, root-level layout. Exactly one notebook remains in this project: `Spotify_EDA.ipynb`. The two older notebook drafts are preserved outside the repository in `D:\MANHATTAN\Spotify_EDA_Working_Archive\notebooks`. The nested `data/`, `outputs/`, `src/`, `team/`, and `presentation/` folders are supporting work materials; the required analyses and presentation narrative belong in the consolidated root notebook. Member work can be drafted elsewhere for review, but its final code and verified interpretation must be integrated into `Spotify_EDA.ipynb`.
+
+## Run the notebook on Windows
+
+From PowerShell:
 
 ```powershell
 cd D:\MANHATTAN\Spotify_EDA_Project
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
-jupyter notebook
+jupyter notebook Spotify_EDA.ipynb
 ```
 
-If PowerShell blocks activation, run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` in that terminal, then activate the environment. In Google Colab, upload the project files or mount the project folder and adjust the notebook's relative paths.
+In Google Colab, upload `Spotify_EDA.ipynb`, `spotify_tracks.csv`, and `spotify_data_description.csv` together, or mount the folder containing them. The notebook expects the CSV beside the notebook.
 
-## Main files
+## Current integration status
 
-- `notebooks/05_Temporal_Analysis.ipynb`: leader's temporal analysis.
-- `data/raw/spotify_tracks.csv`: unchanged original data.
-- `data/processed/cleaned_spotify_tracks.csv`: exact repeats removed and confirmed missing sentinels marked as missing.
-- `outputs/reports/`: dataset, temporal, recommendation, reference, and code explanation reports.
-- `outputs/graphs/temporal/`: six temporal graph images.
-- `team/`: assignment tracking, handoff, and final integration checklist.
-- `presentation/Spotify_EDA_Draft.pptx`: editable 18-slide integration draft with placeholders for teammate results.
+Dataset inspection, documented cleaning logic, initial recommendation evidence, and the leader's temporal analysis are included. Member 1's full univariate section, Member 2's full bivariate section, Member 3's multivariate/outlier section, and the final subjective-answer PDF still need their reviewed results. The consolidated notebook labels those sections as pending; it is an integration draft until they are complete.
 
-## Reproducibility
+## Verified source data
 
-From `Spotify_EDA_Project`, run `python src\build_handoff.py` to rebuild the notebook outputs, cleaned copy, tables, reports, and presentation draft. It reads the raw CSV and does not edit it. The notebook itself uses beginner-level Pandas and Matplotlib operations.
-
-## Source
-
-Reference repository: https://github.com/Adrija-verse/EDA_Project1_SpotifyTracks. See `outputs/reports/REFERENCE_AUDIT.md` for claim checks and caveats.
+The root-level CSV and data dictionary are copies of the folder supplied with the problem statement. The supplied CSV and the previously cloned reference CSV have identical values and row order; their byte-level difference is line endings only. See `data/metadata/SOURCE_MANIFEST.md` and `outputs/reports/REFERENCE_AUDIT.md` for provenance and reference-claim checks.
