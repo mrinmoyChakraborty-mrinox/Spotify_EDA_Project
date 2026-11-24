@@ -1,0 +1,56 @@
+Variable X,Variable Y,Pearson r,Spearman r,Valid n
+Popularity,Energy,0.147403,0.131373,62204
+Popularity,Danceability,0.042058,-0.014991,62204
+Popularity,Valence,0.00915,-0.032212,62204
+Popularity,Acousticness,-0.138433,-0.120048,62204
+Popularity,Loudness,0.201248,0.20396,62204
+Popularity,Instrumentalness,-0.127144,-0.089273,62204
+Popularity,Liveness,-0.012398,-0.019314,62204
+Popularity,Speechiness,-0.053665,-0.017267,62204
+Popularity,Tempo,0.027794,0.018937,62204
+Popularity,Duration (min),-0.039886,-0.053922,62239
+Energy,Danceability,0.465649,0.360144,62204
+Energy,Valence,0.525673,0.482866,62204
+Energy,Acousticness,-0.6429,-0.612251,62204
+Energy,Loudness,0.801292,0.774152,62204
+Energy,Instrumentalness,-0.385192,-0.265616,62204
+Energy,Liveness,0.213757,0.147462,62204
+Energy,Speechiness,0.04002,0.369132,62204
+Energy,Tempo,0.153802,0.150267,62204
+Energy,Duration (min),0.100049,0.097155,62204
+Danceability,Valence,0.631952,0.594631,62204
+Danceability,Acousticness,-0.373772,-0.325334,62204
+Danceability,Loudness,0.47398,0.312123,62204
+Danceability,Instrumentalness,-0.429558,-0.218412,62204
+Danceability,Liveness,-0.02014,-0.05724,62204
+Danceability,Speechiness,0.176198,0.298462,62204
+Danceability,Tempo,0.048106,0.036389,62204
+Danceability,Duration (min),0.064957,0.078597,62204
+Valence,Acousticness,-0.246668,-0.207239,62204
+Valence,Loudness,0.470735,0.389811,62204
+Valence,Instrumentalness,-0.429834,-0.293517,62204
+Valence,Liveness,0.056956,0.02379,62204
+Valence,Speechiness,0.135127,0.310176,62204
+Valence,Tempo,0.099389,0.095376,62204
+Valence,Duration (min),0.075562,0.126876,62204
+Acousticness,Loudness,-0.480609,-0.483172,62204
+Acousticness,Instrumentalness,0.200124,0.134696,62204
+Acousticness,Liveness,-0.118426,-0.069516,62204
+Acousticness,Speechiness,-0.024168,-0.188397,62204
+Acousticness,Tempo,-0.139555,-0.162184,62204
+Acousticness,Duration (min),-0.019143,0.00148,62204
+Loudness,Instrumentalness,-0.554909,-0.469269,62204
+Loudness,Liveness,0.138027,0.115282,62204
+Loudness,Speechiness,-0.049604,0.176942,62204
+Loudness,Tempo,0.132768,0.108326,62204
+Loudness,Duration (min),0.119294,0.045994,62204
+Instrumentalness,Liveness,-0.105733,-0.114751,62204
+Instrumentalness,Speechiness,-0.137473,-0.156634,62204
+Instrumentalness,Tempo,-0.051224,-0.00749,62204
+Instrumentalness,Duration (min),-0.164693,-0.078226,62204
+Liveness,Speechiness,0.075833,0.074753,62204
+Liveness,Tempo,0.022894,0.012175,62204
+Liveness,Duration (min),-0.000599,-0.032345,62204
+Speechiness,Tempo,0.03463,0.069585,62204
+Speechiness,Duration (min),-0.058378,-0.061904,62204
+Tempo,Duration (min),0.023268,0.029509,62204
