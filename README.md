@@ -30,7 +30,7 @@ In Google Colab, upload `Spotify_EDA.ipynb`, `spotify_tracks.csv`, and `spotify_
 
 ## Current integration status
 
-Dataset inspection, documented cleaning logic, initial recommendation evidence, and the leader's temporal analysis are included. Member 1's full univariate section, Member 2's full bivariate section, Member 3's multivariate/outlier section, and the final subjective-answer PDF still need their reviewed results. The consolidated notebook labels those sections as pending; it is an integration draft until they are complete.
+Dataset inspection, documented cleaning logic, leader temporal actuals, year-over-year growth, chart interpretations, and initial recommendation evidence are included. The leader's popular-track comparisons use a fixed global Q3 cutoff, with ties disclosed. Member 1's univariate section, Member 2's bivariate section, Member 3's multivariate/outlier section, final recommendation review, and the subjective-answer PDF still need reviewed results. The consolidated notebook labels teammate sections as pending; it remains an integration draft until they are complete.
 
 ## Verified source data
 

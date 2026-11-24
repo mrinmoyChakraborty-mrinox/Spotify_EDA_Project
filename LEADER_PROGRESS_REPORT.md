@@ -20,7 +20,9 @@ Raw data has 62,317 rows and 22 columns, years 1971-2024. It has 78 exact repeat
 
 - Highest year count: 2023 (6,427); lowest: 1976 (9).
 - Mean popularity highest in 1976 (39.33; n=9), lowest in 1992 (7.90; n=405).
-- Six graph files are generated in `outputs/graphs/temporal/`. Year averages are descriptive and sample sizes are uneven.
+- The notebook now includes the original six actuals charts, eight additional temporal actuals analyses, and a separate year-over-year growth chart. Figures and result tables are embedded.
+- Popular tracks use a fixed popularity >= cleaned-data Q3=26 cutoff; ties select 16,051 rows (25.8%). Popular-track duration medians by decade range from 4.85 minutes (1990s) to 3.47 minutes (2020s).
+- Energy–danceability decade correlations range from +0.116 (1980s) to +0.552 (2000s). This is association, not causation. Popularity is the dataset snapshot score grouped by release year, not historical popularity at release.
 
 ## Recommendation evidence
 
@@ -30,7 +32,7 @@ Raw data has 62,317 rows and 22 columns, years 1971-2024. It has 78 exact repeat
 
 ## Completed deliverables
 
-- `Spotify_EDA.ipynb` - one consolidated, root-level integration notebook; its executable data inspection, cleaning, correlation evidence, and temporal cells have been run. Member 1–3 analysis sections remain marked pending.
+- `Spotify_EDA.ipynb` - one consolidated, root-level integration notebook; data inspection, cleaning, correlation evidence, leader actuals, year-over-year growth, chart outputs, and explanations have been run. Member 1–3 analysis sections remain marked pending.
 - Cleaned dataset copy, dataset profile, temporal report, recommendation report and evidence CSV.
 - Root-level notebook and data files now follow the flat, notebook-centered layout of the supplied reference repository.
 - Code explanation with viva questions, reference audit, six temporal graphs, team tracker, handoff template, integration checklist, requirements, and editable 18-slide PPTX draft.
@@ -49,7 +51,8 @@ Member 3: complete multivariate and outlier analysis, state the outlier rule, an
 
 ## Leader tasks remaining
 
-1. Review Member 1: compare their cleaned row count, missing-value treatment, variable ranges, and distribution statistics with the raw CSV and data dictionary. Confirm every plot uses the same cleaned data.
+1. Learn and present your completed Data Description and temporal actuals/growth sections; review verified cutoffs, sample sizes, findings and limitations.
+2. Review Member 1: compare their cleaned row count, missing-value treatment, variable ranges, and distribution statistics with the raw CSV and data dictionary. Confirm every plot uses the same cleaned data.
 2. Review Member 2: reproduce each reported correlation or group comparison; check axis scales, sample size, outliers, direction, and avoid causal wording.
 3. Review Member 3: verify multivariate method and variable selection; check the outlier threshold and inspect examples before calling them errors.
 4. Find incorrect interpretations by asking what rows, filters, formula, and comparison support each claim. Recalculate key values from the source.
@@ -60,4 +63,4 @@ Member 3: complete multivariate and outlier analysis, state the outlier rule, an
 
 ## Technical note
 
-A project-local virtual environment was created and the packages in requirements.txt installed. All 17 notebook code cells were executed sequentially with Python; no cell errors occurred, and all six graph images were saved and embedded as notebook outputs. A full nbconvert run did not complete in this managed Windows session, so this report does not claim a successful Jupyter-kernel run. Open the notebook interactively with the setup commands in README.md and review the saved chart outputs.
+A project-local virtual environment was created and the packages in requirements.txt installed. All 26 notebook code cells were executed sequentially with the project-local Python environment; no cell errors occurred, and all 15 graph images were saved and embedded as notebook outputs. A full nbconvert run was not performed for this update. Open the notebook interactively with the setup commands in README.md and review the saved chart outputs.

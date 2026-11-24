@@ -138,3 +138,94 @@ applies tight layout and saves at 300 DPI with the dark background.
 
 Rules of thumb: green for the primary series; muted grey/blue/sand only for extra
 categories; keep gridlines subtle; never colour every element green.
+
+## 10. Addendum (24 November 2026): temporal deck rebuilt with all 15 charts
+
+The temporal section of the deck was rebuilt from scratch using the 9 newly
+arrived temporal charts plus the 6 original charts (15 total). Sections 1–2
+above still describe the earlier restyle; this addendum supersedes the deck
+description (slides 11–13 only, 6 charts) with the current 17-slide temporal
+section that shows one slide per chart.
+
+### 10.1 Deck structure
+
+`presentation/Spotify_EDA_Draft.pptx` now has **32 slides** (15 chart images):
+
+| Slide | Content | Chart |
+|---|---|---|
+| 1–10 | Title, problem, dataset, cleaning, method, team (unchanged) | — |
+| 11 | Temporal Scope & Caveats | — (overview) |
+| 12 | Track Counts by Release Year | `yearly_track_count.png` |
+| 13 | Average Popularity | `yearly_average_popularity.png` |
+| 14 | Average Energy | `yearly_average_energy.png` |
+| 15 | Average Danceability | `yearly_average_danceability.png` |
+| 16 | Average Valence | `yearly_average_valence.png` |
+| 17 | Combined Feature Trends | `combined_temporal_features.png` |
+| 18 | Year-Over-Year Change | `year_over_year_growth.png` |
+| 19 | Popular-Track Energy & Danceability | `popular_energy_danceability_by_year.png` |
+| 20 | Popular-Track Key & Tempo | `popular_key_tempo_prevalence_by_year.png` |
+| 21 | Popular-Track Duration | `popular_duration_by_decade.png` |
+| 22 | Acousticness & Instrumentalness | `popular_acousticness_instrumentalness_by_year.png` |
+| 23 | Loudness & Speechiness | `yearly_loudness_speechiness.png` |
+| 24 | Language Composition | `language_share_by_year.png` |
+| 25 | Popular-Track Liveness | `popular_liveness_by_decade.png` |
+| 26 | Energy–Danceability Link | `energy_danceability_correlation_by_decade.png` |
+| 27 | Temporal Takeaways | — (summary) |
+| 28–32 | Outliers, Findings, Recommendations, Limitations, Conclusion (unchanged) | — `outlier_boxplots.png` on 28 |
+
+### 10.2 Build method
+
+- New script `src/build_presentation_temporal.py` holds the slide text as data
+  (`SLIDES`), so every claim on every slide is visible in one place.
+- The old slides 11–13 are deleted and replaced; the script saves once to a
+  temporary `*.trimmed.pptx`, reopens it, then appends the 17 new slides and
+  rewrites slide order (`existing[:10] + new + existing[10:]`). The two-stage
+  save avoids python-pptx "duplicate part name" zip warnings when reusing the
+  same image files.
+- Layout is chosen per image aspect ratio: ≥ 2.1 is "wide" (three bullet
+  columns above, chart 9.9 in wide below) and < 2.1 is "side" (bullets left,
+  chart 6.55 in wide right). This keeps every chart legible instead of shrinking
+  landscape charts into a narrow column.
+- Slide chrome matches the restyle: `#121212` background, 0.18 in `#1DB954`
+  left accent bar, 26 pt white title, `#B3B3B3` body, 9.5 pt footer
+  "Spotify Tracks EDA | Temporal Analysis", italic grey caveat bottom-right.
+
+### 10.3 Numbers on the slides (recomputed from the cleaned CSV)
+
+62,239 rows, 1971–2024 (54 years); busiest year 2023 = 6,427 tracks, sparsest
+1976 = 9; years with fewer than 30 tracks: 1971, 1972, 1974, 1975, 1976, 1978,
+1980. Popularity max 39.33 (1976, n=9), min 7.90 (1992, n=405), best
+reliable-year mean 34.46 (1977, n=39). Energy 0.438 (1991)–0.651 (1977);
+danceability 0.448 (1977)–0.683 (1993); valence 0.450 (2021)–0.726 (1987).
+Popular threshold 26.0 → 16,051 tracks (25.8%). Popular median energy 0.262
+(1971)–0.762 (1980); median danceability 0.445 (1975)–0.799 (1979); duration
+medians 4.08 / 4.51 / 4.85 / 4.44 / 3.90 / 3.47 min by decade; loudness median
+−11.54 dB (1988) to −6.48 dB (1979); speechiness mean 0.067 (2012)–0.165 (1973);
+liveness 0.117 (1980s, n=347) to 0.126 (2010s, n=7,039); decade energy vs
+danceability r = 0.199 / 0.116 / 0.474 / 0.552 / 0.497 / 0.449; tempo quartiles
+95.95 / 117.99 / 135.08 BPM; English share 100% (1971) → 61.5% (2024) with
+English, Hindi, Korean, Malayalam, Tamil, Telugu and Unknown as the labels.
+
+### 10.4 Discrepancies found (reported, not silently changed)
+
+1. **Median vs mean.** The learning note in notebook cell 49 (source:
+   `src/leader_temporal_cells.py`) describes acousticness as "median 0.062 in
+   1975 to 0.901 in 1971", but the chart plots the **mean**: verified 0.826
+   (1971), peak 0.830 (1988), low 0.135 (1975). The slide text follows the
+   chart (mean) and does not quote the note's medians.
+2. The same note gives median energy max 0.763 (1980); recomputation gives
+   0.762. The slide uses 0.762, consistent with the data.
+3. The note lists a Spanish language category; the cleaned data has no Spanish
+   label, so the language slide lists only the labels that exist.
+
+### 10.5 Verification
+
+- Deck reopens cleanly: 32 slides, 15 picture shapes.
+- Data untouched — MD5s still `DBE563E8…B509C` (root),
+  `58EFB09C…16ECAC` (`data/raw`), `B3510B9B…709D0` (cleaned).
+- All 17 temporal slides were rendered through PowerPoint and inspected at
+  1600×900: no clipped charts, no overlapping text, chart titles and caveats
+  readable, dark charts blend with the slide background.
+- Pre-rebuild 18-slide deck backed up to
+  `outputs/backups/pre_temporal_slides/Spotify_EDA_Draft.pptx` (restore that
+  file before re-running the build script on a previous version).
